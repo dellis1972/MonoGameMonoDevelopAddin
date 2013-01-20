@@ -11,11 +11,11 @@ namespace ${Namespace}
     [Register("AppDelegate")]
     class Program : UIApplicationDelegate
     {
-        ${ProjectName}Game game;
+        Game1 game;
         public override void FinishedLaunching(UIApplication app)
         {
             // Fun begins..
-            game = new ${ProjectName}Game();
+            game = new Game1();
             game.Run();
         }
 

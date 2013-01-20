@@ -9,7 +9,7 @@
 	</TemplateConfiguration>
 	
 	<Actions>
-		<Open filename = "${ProjectName}Game.cs"/>
+		<Open filename = "Game1.cs"/>
 	</Actions>
 	
 	<Combine name = "${ProjectName}" directory = ".">
