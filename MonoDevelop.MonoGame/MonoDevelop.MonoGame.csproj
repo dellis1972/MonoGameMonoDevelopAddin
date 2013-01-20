@@ -102,10 +102,10 @@
     <Content Include="assemblies\Linux\OpenTK.dll.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="assemblies\Linux\SDL.dll">
+    <Content Include="assemblies\Linux\sdl.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="assemblies\Linux\SDL_mixer.dll">
+    <Content Include="assemblies\Linux\sdl_mixer.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="assemblies\Linux\Tao.Sdl.dll">
@@ -135,7 +135,7 @@
     <Content Include="assemblies\WindowsGL\OpenTK.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="assemblies\WindowsGL\SDL.dll">
+    <Content Include="assemblies\WindowsGL\sdl.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="assemblies\WindowsGL\Tao.Sdl.dll">
