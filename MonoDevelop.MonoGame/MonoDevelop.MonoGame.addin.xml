@@ -6,6 +6,7 @@
 		<Import file="icons/monogame-project-android-32.png" />
 		<Import file="icons/monogame-project-ios-32.png" />
 		<Import file="templates/MonoGameAndroidProject.xpt.xml" />
+		<Import file="templates/MonoGameOUYAProject.xpt.xml" />
 		<Import file="templates/MonoGameiOSProject.xpt.xml" />
 		<Import file="templates/MonoGameWindowsProject.xpt.xml" />
 		<Import file="templates/MonoGameLinuxProject.xpt.xml" />
@@ -18,6 +19,7 @@
 		<Import file="templates/MonoGameApplication/AboutContent.txt" />
 		<Import file="templates/MonoGameApplication/AboutResources.txt" />
 		<Import file="templates/MonoGameApplication/Activity1.cs" />
+		<Import file="templates/MonoGameApplication/OUYAActivity1.cs" />
 		<Import file="templates/MonoGameApplication/AndroidAssemblyInfo.cs" />
 		<Import file="templates/MonoGameApplication/AssemblyInfo.cs" />
 		<Import file="templates/MonoGameApplication/Game1.cs" />
@@ -61,6 +63,9 @@
     	<Import file="assemblies/MacOS/Tao.Sdl.dll.config"/>  
     	<Import file="assemblies/iOS/MonoGame.Framework.dll"/>        	
     	<Import file="assemblies/iOS/Lidgren.Network.dll"/>    
+    	<Import file="assemblies/OUYA/MonoGame.Framework.dll"/>   
+    	<Import file="assemblies/OUYA/Lidgren.Network.dll"/>     
+    	<Import file="assemblies/OUYA/Ouya.Console.Api.dll"/>
 	</Runtime>
 	<Dependencies>
 		<Addin id="Core" version="3.0" />
@@ -83,6 +88,7 @@
 	</Extension>
 	<Extension path="/MonoDevelop/Ide/ProjectTemplates">
 		<ProjectTemplate id="MonoGameForAndroidProject" file="templates/MonoGameAndroidProject.xpt.xml" />
+		<ProjectTemplate id="MonoGameForOUYAProject" file="templates/MonoGameOUYAProject.xpt.xml" />
 		<ProjectTemplate id="MonoGameForiOSProject" file="templates/MonoGameiOSProject.xpt.xml" />
 		<ProjectTemplate id="MonoGameForWindowsProject" file="templates/MonoGameWindowsProject.xpt.xml" />
 		<ProjectTemplate id="MonoGameForLinuxProject" file="templates/MonoGameLinuxProject.xpt.xml" />
@@ -129,6 +135,13 @@
       <Package name="monogame-android" version="3.0" clrVersion="Default">
         <Assembly file="assemblies/Android/MonoGame.Framework.dll" />
         <Assembly file="assemblies/Android/Lidgren.Network.dll" />        
+      </Package>
+    </Condition>
+    <Condition id="PackageNotInstalled" name="monogame-ouya" version="3.0">
+      <Package name="monogame-ouya" version="3.0" clrVersion="Default">
+        <Assembly file="assemblies/OUYA/MonoGame.Framework.dll" />
+        <Assembly file="assemblies/OUYA/Lidgren.Network.dll" />        
+        <Assembly file="assemblies/OUYA/Ouya.Console.Api.dll" />        
       </Package>
     </Condition>
   </Extension>
