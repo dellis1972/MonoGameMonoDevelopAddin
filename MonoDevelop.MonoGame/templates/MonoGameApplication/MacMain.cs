@@ -31,7 +31,7 @@ namespace ${Namespace}
 		${ProjectName}Game game;
 		public override void FinishedLaunching (MonoMac.Foundation.NSObject notification)
 		{
-			game = new ${ProjectName}Game ();
+			game = new Game1 ();
 			game.Run ();
 		}
 		
