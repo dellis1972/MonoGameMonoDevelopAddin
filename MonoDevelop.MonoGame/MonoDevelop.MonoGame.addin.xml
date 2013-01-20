@@ -77,7 +77,7 @@
 	<Extension path="/MonoDevelop/Core/StockIcons">
 		<StockIcon stockid="monogame-project" file="icons/monogame-project-32.png" />
 		<StockIcon stockid="monogame-project-android" file="icons/monogame-project-android-32.png" />
-		<StockIcon stockid="monogame-project-ios" file="icons/monogame-project-iso-32.png" />
+		<StockIcon stockid="monogame-project-ios" file="icons/monogame-project-ios-32.png" />
 	</Extension>
 	<Extension path="/MonoDevelop/ProjectModel/MSBuildItemTypes">
 		<DotNetProjectSubtype id="MonoGame" guid="{9b831fef-f496-498f-9fe8-180da5cb4258}" type="MonoDevelop.MonoGame.MonoGameProject">

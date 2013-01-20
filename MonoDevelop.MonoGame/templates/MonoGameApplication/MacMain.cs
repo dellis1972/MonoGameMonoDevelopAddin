@@ -28,7 +28,7 @@ namespace ${Namespace}
 
 	class AppDelegate : NSApplicationDelegate
 	{
-		${ProjectName}Game game;
+		Game1 game;
 		public override void FinishedLaunching (MonoMac.Foundation.NSObject notification)
 		{
 			game = new Game1 ();
