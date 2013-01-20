@@ -1,6 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="MonoDevelop.MonoGame\MonoDevelop.MonoGame.addin.xml">
+    <Files>
+      <File FileName="MonoDevelop.MonoGame\MonoDevelop.MonoGame.addin.xml" Line="144" Column="61" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
