@@ -1,25 +1,13 @@
 using System;
-using MonoDevelop.Projects;
 using System.Xml;
+using MonoDevelop.Projects;
 using MonoDevelop.Core.Assemblies;
 using MonoDevelop.Core.Serialization;
+using System.Collections.Generic;
+using MonoDevelop.Core;
 
 namespace MonoDevelop.MonoGame
 {	
-	public static class MonoGameBuildAction
-	{
-		public static readonly string Shader;
-		
-		public static bool IsMonoGameBuildAction(string action)
-		{
-			return action == Shader;
-		}
-		
-		static MonoGameBuildAction ()
-		{
-			Shader = "MonoGameShader";
-		}
-	}
 	
 	public class MonoGameProject :  DotNetAssemblyProject
 	{
@@ -89,15 +77,15 @@ namespace MonoDevelop.MonoGame
 		protected override System.Collections.Generic.IList<string> GetCommonBuildActions ()
 		{			
 			var actions = new System.Collections.Generic.List<string>(base.GetCommonBuildActions());
-			actions.Add(MonoGameBuildAction.Shader);
+			actions.Add(MonoGameBuildAction.MonoGameContent);
 			return actions;
-		}
-		
+		}	
+
 		public override string GetDefaultBuildAction (string fileName)
 		{
-			if (System.IO.Path.GetExtension(fileName) == ".fx")
+			if (MonoGameBuildAction.IsKnownFileType(System.IO.Path.GetExtension(fileName)))
 			{
-				return MonoGameBuildAction.Shader;
+				return MonoGameBuildAction.MonoGameContent;
 			}
 			return base.GetDefaultBuildAction (fileName);
 		}        
@@ -157,118 +145,24 @@ namespace MonoDevelop.MonoGame
             }
         }
 				
-	}
-	
-	public class MonoGameBuildExtension : ProjectServiceExtension
-	{
-		
-		protected override BuildResult Build (MonoDevelop.Core.IProgressMonitor monitor, SolutionEntityItem item, ConfigurationSelector configuration)
+		public bool IsProcessorNameValid (string str)
 		{
-#if DEBUG			
-			monitor.Log.WriteLine("MonoGame Extension Build Called");	
-#endif			
-			try
-			{
-			  return base.Build (monitor, item, configuration);
-			}
-			finally
-			{
-#if DEBUG				
-			   monitor.Log.WriteLine("MonoGame Extension Build Ended");	
-#endif				
-			}
+			return true;
 		}
-		
-		protected override BuildResult Compile (MonoDevelop.Core.IProgressMonitor monitor, SolutionEntityItem item, BuildData buildData)
+
+		public System.Collections.ICollection GetProcessorNames ()
 		{
-#if DEBUG			
-			monitor.Log.WriteLine("MonoGame Extension Compile Called");	
-#endif			
-			try
-			{				
-				var proj = item as MonoGameProject;
-				if (proj == null)
-				{
-				   return base.Compile (monitor, item, buildData);
-				}
-				monitor.Log.WriteLine("Compiling for {0}", proj.MonoGamePlatform);
-				var results = new System.Collections.Generic.List<BuildResult>();
-				foreach(var file in proj.Files)
-				{
-					if (MonoGameBuildAction.IsMonoGameBuildAction(file.BuildAction))					
-					{												
-						buildData.Items.Add(file);
-						var buildResult = MonoGameContentProcessor.Compile(file, monitor, buildData);
-						results.Add(buildResult);
-					}
-				}
-				return base.Compile (monitor, item, buildData).Append(results);
-			}
-			finally
-			{
-#if DEBUG				
-				monitor.Log.WriteLine("MonoGame Extension Compile Ended");	
-#endif				
-			}
+			return new string[] {"TextureProcessor", "SpriteFontProcessor"};
 		}
-	}
-	
-	public class MonoGameProjectBinding : IProjectBinding
-	{
-		public Project CreateProject (ProjectCreateInformation info, System.Xml.XmlElement projectOptions)
-		{ 
-			string lang = projectOptions.GetAttribute ("language");
-			return new MonoGameProject (lang, info, projectOptions);
-		}
-	
-		public Project CreateSingleFileProject (string sourceFile)
+
+		public bool IsImporterNameValid (string str)
 		{
-			throw new InvalidOperationException ();
+			return true;
 		}
-		
-		public bool CanCreateSingleFileProject (string sourceFile)
+
+		public System.Collections.ICollection GetImporterNames ()
 		{
-			return false;
-		}
-		
-		public string Name {
-			get { return "MonoGame"; }
-		}
-	}
-	
-	public class MonoGameProjectConfiguration : DotNetProjectConfiguration
-	{
-		public MonoGameProjectConfiguration () : base ()
-		{
-		}
-		
-		public MonoGameProjectConfiguration (string name) : base (name)
-		{
-		}		
-		
-		public override void CopyFrom (ItemConfiguration configuration)
-		{
-			base.CopyFrom (configuration);
-		}
-	}
-	
-	public class MonoGameContentProcessor 
-	{		
-		
-		public static BuildResult Compile(ProjectFile file,MonoDevelop.Core.IProgressMonitor monitor,BuildData buildData)
-		{			
-			switch (file.BuildAction) {
-			case "MonoGameShader" :
-				var result = new BuildResult();
-				monitor.Log.WriteLine("Compiling Shader");					
-				monitor.Log.WriteLine("Shader : "+buildData.Configuration.OutputDirectory);
-				monitor.Log.WriteLine("Shader : "+file.FilePath);
-				monitor.Log.WriteLine("Shader : "+file.ToString());
-				return result;
-			default:
-				return new BuildResult();
-			}
-			
+			return new string[] {"TextureImporter", "SpriteFontImporter"};
 		}
 	}
 }

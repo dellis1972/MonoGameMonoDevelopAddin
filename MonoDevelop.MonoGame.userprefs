@@ -1,9 +1,26 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="MonoDevelop.MonoGame\MonoDevelop.MonoGame.addin.xml">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="MonoDevelop.MonoGame\MonoGameContentProcessor.cs">
     <Files>
-      <File FileName="MonoDevelop.MonoGame\MonoDevelop.MonoGame.addin.xml" Line="144" Column="61" />
+      <File FileName="MonoDevelop.MonoGame\MonoGameProject.cs" Line="165" Column="41" />
+      <File FileName="MonoDevelop.MonoGame\MonoDevelop.MonoGame.addin.xml" Line="72" Column="35" />
+      <File FileName="MonoDevelop.MonoGame\MonoGameContentProcessor.cs" Line="21" Column="5" />
+      <File FileName="MonoDevelop.MonoGame\Builder\ContentBuilderLinux.cs" Line="13" Column="3" />
+      <File FileName="MonoDevelop.MonoGame\ContentPropertyProvider.cs" Line="41" Column="3" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="MonoDevelop.MonoGame" expanded="True" />
+        </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

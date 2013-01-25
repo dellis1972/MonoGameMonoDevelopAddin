@@ -1,4 +1,4 @@
-<Addin id="MonoGame" namespace="MonoDevelop" name="MonoGame Project Templates" author="Dean Ellis" copyright="GPL" url="http://monogame.codeplex.com/" description="C# Project and File templates for MonoGame" category="Mono Game" version="3.0.0">
+<Addin id="MonoGame" namespace="MonoDevelop" name="MonoGame Project Templates" author="Dean Ellis" copyright="MSPL" url="http://www.monogame.net/" description="C# Project and File templates for MonoGame" category="Mono Game" version="3.0.0">
 	<Runtime>
 		<Import file="icons/monogame-32.png" />
 		<Import file="icons/monogame-project-16.png" />
@@ -73,6 +73,7 @@
 		<Addin id="SourceEditor2" version="3.0" />
 		<Addin id="Refactoring" version="3.0" />
 		<Addin id="Autotools" version="3.0" />
+		<Addin id="DesignerSupport" version="3.0" />
 	</Dependencies>
 	<Extension path="/MonoDevelop/Core/StockIcons">
 		<StockIcon stockid="monogame-project" file="icons/monogame-project-32.png" />
@@ -99,6 +100,23 @@
 		<FileTemplate id="MonoGameAndroidClass" resource="MonoGameAndroidClass.xft.xml" />
 		<FileTemplate id="MonoGameiOSClass" resource="MonoGameiOSClass.xft.xml" />
 		<FileTemplate id="MonoGameMacClass" resource="MonoGameMacClass.xft.xml" />
+	</Extension>
+	<Extension path = "/MonoDevelop/ProjectModel/ProjectServiceExtensions">  
+        <Class class="MonoDevelop.MonoGame.MonoGameBuildExtension"/>  
+    </Extension>
+    <Extension path = "/MonoDevelop/ProjectModel/ExtendedProperties">  
+       <ItemProperty class = "MonoDevelop.Projects.ProjectFile"  
+                     name = "Importer"  
+                     type = "System.String" />  
+      <ItemProperty class = "MonoDevelop.Projects.ProjectFile"  
+                     name = "Processor"  
+                     type = "System.String" />  
+	  <ItemProperty class = "MonoDevelop.Projects.ProjectFile"  
+                     name = "Name"  
+                     type = "System.String" />                       
+     </Extension>    
+     <Extension path="/MonoDevelop/DesignerSupport/PropertyProviders">
+		<Class class="MonoDevelop.MonoGame.ContentPropertyProvider"/>
 	</Extension>
   <!-- Add the monogame packages if it is not installed already -->
   <Extension path="/MonoDevelop/Core/SupportPackages">

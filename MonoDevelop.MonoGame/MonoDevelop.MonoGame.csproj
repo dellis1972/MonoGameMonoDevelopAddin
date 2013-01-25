@@ -14,7 +14,7 @@
     <DebugSymbols>True</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>False</Optimize>
-    <OutputPath>bin\Release</OutputPath>
+    <OutputPath>..\..\..\..\AppData\Local\MonoDevelop-3.0\LocalInstall\Addins\MonoDevelop.MonoGame.3.0.0</OutputPath>
     <DefineConstants>DEBUG;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -43,10 +43,28 @@
       <HintPath>References\MonoDevelop.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="MonoDevelop.Ide">
+      <HintPath>References\MonoDevelop.Ide.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="MonoDevelop.DesignerSupport">
+      <HintPath>References\MonoDevelop.DesignerSupport.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="MonoGameProject.cs" />
+    <Compile Include="MonoGameBuildAction.cs" />
+    <Compile Include="MonoGameBuildExtension.cs" />
+    <Compile Include="MonoGameProjectBinding.cs" />
+    <Compile Include="MonoGameProjectConfiguration.cs" />
+    <Compile Include="MonoGameContentProcessor.cs" />
+    <Compile Include="Builder\ContentBuilderWindows.cs" />
+    <Compile Include="Builder\ContentBuilderLinux.cs" />
+    <Compile Include="Builder\ContentBuilderMac.cs" />
+    <Compile Include="Builder\ContentBuilder.cs" />
+    <Compile Include="ContentPropertyProvider.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -65,6 +83,7 @@
     <Folder Include="assemblies\WindowsGL\" />
     <Folder Include="assemblies\Linux\" />
     <Folder Include="assemblies\OUYA\" />
+    <Folder Include="Builder\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="templates\MonoGameApplication\AboutAssets.txt">
