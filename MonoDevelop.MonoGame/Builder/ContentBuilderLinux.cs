@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 
 namespace MonoDevelop.MonoGame
 {
@@ -12,12 +13,17 @@ namespace MonoDevelop.MonoGame
 
 		public ContentBuilderLinux (string path) : base(path)
 		{
-			throw new NotImplementedException ();
+
 		}
 
 		public override bool RunBuilder ()
 		{
-			throw new System.NotImplementedException ();
+			ProcessStartInfo info = new ProcessStartInfo();
+			info.Arguments = System.IO.Path.Combine(Path, "tools", MGCB ) + " " + Arguments.ToArgs();
+			info.FileName = "mono"; 
+			Process p = Process.Start(info);		
+			p.WaitForExit();
+			return true;
 		}
 	}
 }

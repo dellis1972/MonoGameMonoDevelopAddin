@@ -43,7 +43,7 @@ namespace MonoDevelop.MonoGame
 					if (MonoGameBuildAction.IsMonoGameBuildAction(file.BuildAction))					
 					{												
 						buildData.Items.Add(file);
-						var buildResult = MonoGameContentProcessor.Compile(file, monitor, buildData, proj.MonoGamePlatform);
+						var buildResult = MonoGameContentProcessor.Compile(file, monitor, buildData, proj);
 						results.Add(buildResult);
 					}
 				}

@@ -19,7 +19,7 @@ namespace MonoDevelop.MonoGame
 		public override bool RunBuilder ()
 		{
 			ProcessStartInfo info = new ProcessStartInfo();
-			info.Arguments = "";
+			info.Arguments = Arguments.ToArgs();			
 			info.FileName = System.IO.Path.Combine(Path, "tools", MGCB );
 			Process p = Process.Start(info);		
 			p.WaitForExit();

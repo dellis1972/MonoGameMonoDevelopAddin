@@ -2,7 +2,7 @@ using System;
 
 namespace MonoDevelop.MonoGame
 {
-	public class ContentBuilderMac : ContentBuilder
+	public class ContentBuilderMac : ContentBuilderLinux
 	{
 		public override string MGCB {
 			get {
@@ -12,13 +12,9 @@ namespace MonoDevelop.MonoGame
 
 		public ContentBuilderMac (string path) : base(path)
 		{
-			throw new NotImplementedException ();
+
 		}
 
-		public override bool RunBuilder ()
-		{
-			throw new System.NotImplementedException ();
-		}
 	}
 }
 
