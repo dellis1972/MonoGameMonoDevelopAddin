@@ -8,9 +8,15 @@ namespace MonoDevelop.MonoGame
 
 		public abstract bool RunBuilder();
 
-		protected string Path { get; private set; }
+		public string Path { get; private set; }
+
+		public abstract string SubDirectory { get; }
 
 		public ContentBuilderArgs Arguments { get; set; }
+
+		public string ErrorOutput { get; set; }
+
+		public string Output { get; set; }
 
 		public ContentBuilder (string path)
 		{

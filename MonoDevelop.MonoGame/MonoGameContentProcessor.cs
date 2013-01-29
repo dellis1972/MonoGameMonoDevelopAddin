@@ -14,7 +14,7 @@ namespace MonoDevelop.MonoGame
 		
 		static MonoGameContentProcessor ()
 		{
-			addInPath = System.IO.Path.GetFullPath(Assembly.GetAssembly(typeof(MonoGameContentProcessor)).Location);		
+			addInPath = Path.GetFullPath(Path.GetDirectoryName(Assembly.GetAssembly(typeof(MonoGameContentProcessor)).Location));		
 			if (Environment.OSVersion.Platform == PlatformID.MacOSX) {
 				builder = new ContentBuilderMac(addInPath);
 			} else if (Environment.OSVersion.Platform == PlatformID.Unix) {
@@ -58,14 +58,27 @@ namespace MonoDevelop.MonoGame
 				monitor.Log.WriteLine("Name : "+file.ExtendedProperties["Name"]);
 				monitor.Log.WriteLine("Importer : "+file.ExtendedProperties["Importer"]);
 				monitor.Log.WriteLine("Processor : "+file.ExtendedProperties["Processor"]);
+
 				builder.Arguments.FilePath = file.FilePath;
+				builder.Arguments.WorkingDirectory = Path.GetFullPath(Path.GetDirectoryName(project.FileName));
 				builder.Arguments.Platform = project.MonoGamePlatform;
 				builder.Arguments.OutputDir = buildData.Configuration.OutputDirectory;
 				builder.Arguments.Importer = (string)file.ExtendedProperties["Importer"];
 				builder.Arguments.Processor = (string)file.ExtendedProperties["Processor"];
 				// append any assembly references for content projects
 				builder.Arguments.References.AddRange(GetContentPipelineReferences(project, buildData));
-				builder.RunBuilder();
+				monitor.Log.WriteLine("WorkingDirectory : "+builder.Arguments.WorkingDirectory);
+				monitor.Log.WriteLine("WorkingDirectory : "+Path.Combine(builder.Path, builder.SubDirectory, builder.MGCB ));
+				monitor.Log.WriteLine("Args : "+builder.Arguments.ToArgs());
+				try {
+				   if (!builder.RunBuilder()) {
+						result.AddError(builder.Output);
+						result.AddError(builder.ErrorOutput);
+				   }
+				}
+				catch (Exception ex) {
+					result.AddError(ex.ToString());
+				}
 				return result;
 			default:
 				return new BuildResult();

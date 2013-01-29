@@ -4,14 +4,20 @@
     <Files>
       <File FileName="MonoDevelop.MonoGame\MonoGameProject.cs" Line="165" Column="41" />
       <File FileName="MonoDevelop.MonoGame\MonoDevelop.MonoGame.addin.xml" Line="72" Column="35" />
-      <File FileName="MonoDevelop.MonoGame\MonoGameContentProcessor.cs" Line="21" Column="5" />
-      <File FileName="MonoDevelop.MonoGame\Builder\ContentBuilderLinux.cs" Line="13" Column="3" />
+      <File FileName="MonoDevelop.MonoGame\MonoGameContentProcessor.cs" Line="37" Column="6" />
+      <File FileName="MonoDevelop.MonoGame\Builder\ContentBuilderLinux.cs" Line="28" Column="31" />
       <File FileName="MonoDevelop.MonoGame\ContentPropertyProvider.cs" Line="41" Column="3" />
+      <File FileName="MonoDevelop.MonoGame\Builder\ContentBuilderWindows.cs" Line="26" Column="4" />
+      <File FileName="MonoDevelop.MonoGame\Builder\ContentBuilder.cs" Line="11" Column="9" />
+      <File FileName="MonoDevelop.MonoGame\Builder\ContentBuilderArgs.cs" Line="57" Column="16" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="MonoDevelop.MonoGame" expanded="True" />
+          <Node name="MonoDevelop.MonoGame" expanded="True">
+            <Node name="Builder" expanded="True" />
+            <Node name="MonoGameContentProcessor.cs" selected="True" />
+          </Node>
         </State>
       </Pad>
       <Pad Id="ClassPad">

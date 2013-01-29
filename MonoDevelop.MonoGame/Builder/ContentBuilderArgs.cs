@@ -12,6 +12,8 @@ namespace MonoDevelop.MonoGame
 			ProcessorParams = new List<string>();
 		}
 
+		public string WorkingDirectory { get; set; }
+
 		public string OutputDir { get; set; }
 
 		public string IntermediateDir { get;set;}
@@ -40,22 +42,22 @@ namespace MonoDevelop.MonoGame
 		public string ToArgs()
 		{
 			StringBuilder sb = new StringBuilder();
-			sb.AppendFormat("/outputDir:{0}", OutputDir);
+			sb.AppendFormat("/outputDir:{0} ", OutputDir);
 
 			if (!string.IsNullOrEmpty(IntermediateDir))
-				sb.AppendFormat("/intermediateDir:{0}", IntermediateDir);
+				sb.AppendFormat("/intermediateDir:{0} ", IntermediateDir);
 
 			if (!string.IsNullOrEmpty(FilePath))
-				sb.AppendFormat("/build:{0}", FilePath);
+				sb.AppendFormat("/build:{0} ", FilePath);
 
 			if (!string.IsNullOrEmpty(Importer))
-				sb.AppendFormat("/Importer:{0}", Importer);
+				sb.AppendFormat("/Importer:{0} ", Importer);
 
 			if (!string.IsNullOrEmpty(Processor))
-				sb.AppendFormat("/Processor:{0}", Processor);
+				sb.AppendFormat("/Processor:{0} ", Processor);
 
-			if (!string.IsNullOrEmpty(Platform))
-				sb.AppendFormat("/Platform:{0}", Platform);
+			//if (!string.IsNullOrEmpty(Platform))
+			//	sb.AppendFormat("/Platform:{0} ", Platform);
 
 			return sb.ToString();
 		}

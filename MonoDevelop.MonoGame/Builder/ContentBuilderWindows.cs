@@ -10,6 +10,11 @@ namespace MonoDevelop.MonoGame
 				return "MGCB.exe";
 			}
 		}
+		public override string SubDirectory {
+			get {
+				return "tools/windows";
+			}
+		}
 
 		public ContentBuilderWindows (string path) : base(path)
 		{
@@ -18,12 +23,27 @@ namespace MonoDevelop.MonoGame
 
 		public override bool RunBuilder ()
 		{
-			ProcessStartInfo info = new ProcessStartInfo();
-			info.Arguments = Arguments.ToArgs();			
-			info.FileName = System.IO.Path.Combine(Path, "tools", MGCB );
-			Process p = Process.Start(info);		
+			Output = String.Empty;
+			ErrorOutput = String.Empty;
+			Process p = new Process();
+			p.StartInfo.Arguments = Arguments.ToArgs();
+			p.StartInfo.WorkingDirectory = Arguments.WorkingDirectory;
+			p.StartInfo.FileName = System.IO.Path.Combine(Path, SubDirectory, MGCB );
+			p.StartInfo.UseShellExecute = false;
+			p.StartInfo.RedirectStandardError = true;
+			p.StartInfo.RedirectStandardOutput = true;
+			p.StartInfo.CreateNoWindow = true;
+			p.ErrorDataReceived += (object sender, DataReceivedEventArgs e) => {
+				this.ErrorOutput += e.Data;
+			};	
+			p.OutputDataReceived += (object sender, DataReceivedEventArgs e) => {
+				this.Output += e.Data;
+			};
+			p.Start();
+			p.BeginErrorReadLine();
+			p.BeginOutputReadLine();
 			p.WaitForExit();
-			return true;
+			return p.ExitCode == 0;
 		}
 	}
 }

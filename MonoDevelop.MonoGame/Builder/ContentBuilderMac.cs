@@ -10,6 +10,12 @@ namespace MonoDevelop.MonoGame
 			}
 		}
 
+		public override string SubDirectory {
+			get {
+				return "tools/macos";
+			}
+		}
+
 		public ContentBuilderMac (string path) : base(path)
 		{
 
