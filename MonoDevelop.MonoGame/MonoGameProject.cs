@@ -152,7 +152,7 @@ namespace MonoDevelop.MonoGame
 
 		public System.Collections.ICollection GetProcessorNames ()
 		{
-			return new string[] {"TextureProcessor", "SpriteFontProcessor"};
+			return new string[] {"TextureProcessor", "SpriteFontProcessor", "SoundEffectProcessor", "SongProcessor"};
 		}
 
 		public bool IsImporterNameValid (string str)
@@ -162,7 +162,7 @@ namespace MonoDevelop.MonoGame
 
 		public System.Collections.ICollection GetImporterNames ()
 		{
-			return new string[] {"TextureImporter", "SpriteFontImporter"};
+			return new string[] {"TextureImporter", "FontDescriptionImporter", "WavImporter", "Mp3Importer"};
 		}
 	}
 }

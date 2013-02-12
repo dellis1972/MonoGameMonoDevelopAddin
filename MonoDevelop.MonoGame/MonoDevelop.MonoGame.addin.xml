@@ -66,6 +66,17 @@
     	<Import file="assemblies/OUYA/MonoGame.Framework.dll"/>   
     	<Import file="assemblies/OUYA/Lidgren.Network.dll"/>     
     	<Import file="assemblies/OUYA/Ouya.Console.Api.dll"/>
+    	<!-- Tooling -->
+    	<Import file="tools/macos/libnvtt.dylib"/>
+    	<Import file="tools/macos/Lidgren.Network.dll"/>
+    	<Import file="tools/macos/MGCB.exe"/>
+    	<Import file="tools/macos/MonoGame.Framework.Content.Pipeline.dll"/>
+    	<Import file="tools/macos/MonoGame.Framework.dll"/>
+    	<Import file="tools/macos/NAudio.dll"/>
+    	<Import file="tools/macos/Nvidia.TextureTools.dll"/>
+    	<Import file="tools/macos/Nvidia.TextureTools.dll.config"/>
+    	<Import file="tools/macos/Tao.Sdl.dll"/>
+    	<Import file="tools/macos/Tao.Sdl.dll.config"/>
 	</Runtime>
 	<Dependencies>
 		<Addin id="Core" version="3.0" />

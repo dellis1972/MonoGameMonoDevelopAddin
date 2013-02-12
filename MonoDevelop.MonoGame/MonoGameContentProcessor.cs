@@ -18,7 +18,15 @@ namespace MonoDevelop.MonoGame
 			if (Environment.OSVersion.Platform == PlatformID.MacOSX) {
 				builder = new ContentBuilderMac(addInPath);
 			} else if (Environment.OSVersion.Platform == PlatformID.Unix) {
-				builder = new ContentBuilderLinux(addInPath);
+				// Well, there are chances MacOSX is reported as Unix instead of MacOSX.
+				// Instead of platform check, we'll do a feature checks (Mac specific root folders)
+				if (Directory.Exists("/Applications")
+				    & Directory.Exists("/System")
+				    & Directory.Exists("/Users")
+				    & Directory.Exists("/Volumes"))
+					builder = new ContentBuilderMac(addInPath);
+				else
+				  builder = new ContentBuilderLinux(addInPath);
 			} else {
 				builder = new ContentBuilderWindows(addInPath);
 			}

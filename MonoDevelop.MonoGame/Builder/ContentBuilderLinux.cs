@@ -27,7 +27,7 @@ namespace MonoDevelop.MonoGame
 			Output = String.Empty;
 			ErrorOutput = String.Empty;
 			Process p = new Process();
-			p.StartInfo.Arguments = System.IO.Path.Combine(Path, SubDirectory, MGCB ) + " " + Arguments.ToArgs();
+			p.StartInfo.Arguments = "\"" + System.IO.Path.Combine(Path, this.SubDirectory, MGCB ) + "\" " + Arguments.ToArgs();
 			p.StartInfo.WorkingDirectory = Arguments.WorkingDirectory;
 			p.StartInfo.FileName = "mono";
 			p.StartInfo.UseShellExecute = false;

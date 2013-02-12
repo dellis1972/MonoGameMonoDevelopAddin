@@ -28,7 +28,7 @@ namespace MonoDevelop.MonoGame
 			Process p = new Process();
 			p.StartInfo.Arguments = Arguments.ToArgs();
 			p.StartInfo.WorkingDirectory = Arguments.WorkingDirectory;
-			p.StartInfo.FileName = System.IO.Path.Combine(Path, SubDirectory, MGCB );
+			p.StartInfo.FileName = System.IO.Path.Combine(Path, this.SubDirectory, MGCB );
 			p.StartInfo.UseShellExecute = false;
 			p.StartInfo.RedirectStandardError = true;
 			p.StartInfo.RedirectStandardOutput = true;
