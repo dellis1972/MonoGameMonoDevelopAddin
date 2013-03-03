@@ -20,6 +20,7 @@
 			<Options
                                 MonoGamePlatform="Android"
 				AndroidApplication="true"
+				TargetFrameworkVersion="MonoAndroid,Version=v2.3"
 				AndroidResgenFile="Resources/Resource.designer.cs"
 				AndroidResgenClass="Resource" />
 			<References>

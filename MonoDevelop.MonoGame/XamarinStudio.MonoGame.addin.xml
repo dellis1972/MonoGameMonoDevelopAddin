@@ -68,11 +68,11 @@
     	<Import file="assemblies/OUYA/Ouya.Console.Api.dll"/>
 	</Runtime>
 	<Dependencies>
-		<Addin id="Core" version="3.0" />
-		<Addin id="Ide" version="3.0" />
-		<Addin id="SourceEditor2" version="3.0" />
-		<Addin id="Refactoring" version="3.0" />
-		<Addin id="Autotools" version="3.0" />
+		<Addin id="Core" version="4.0" />
+		<Addin id="Ide" version="4.0" />
+		<Addin id="SourceEditor2" version="4.0" />
+		<Addin id="Refactoring" version="4.0" />
+		<Addin id="Autotools" version="4.0" />
 	</Dependencies>
 	<Extension path="/MonoDevelop/Core/StockIcons">
 		<StockIcon stockid="monogame-project" file="icons/monogame-project-32.png" />
