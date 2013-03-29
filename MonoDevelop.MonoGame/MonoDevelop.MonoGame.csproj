@@ -67,6 +67,7 @@
     <Compile Include="ContentPropertyProvider.cs" />
     <Compile Include="Builder\ContentBuilderArgs.cs" />
     <Compile Include="MonoGameContentProject.cs" />
+    <Compile Include="IMonoGameProject.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

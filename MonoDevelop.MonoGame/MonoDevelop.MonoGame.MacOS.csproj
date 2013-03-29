@@ -1,54 +1,358 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>10.0.0</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{77DC780A-F423-46CA-BAB2-612A87432E74}</ProjectGuid>
+    <ProjectGuid>{1A5D6855-2C68-4B3B-9867-7B8A25729B20}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>MonoDevelop.MonoGame.MacOS</RootNamespace>
+    <RootNamespace>MonoDevelop.MonoGame</RootNamespace>
     <AssemblyName>MonoDevelop.MonoGame</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>False</Optimize>
-    <OutputPath>bin\MacOS\Debug</OutputPath>
+    <OutputPath>..\..\..\..\AppData\Local\MonoDevelop-3.0\LocalInstall\Addins\MonoDevelop.MonoGame.3.0.0</OutputPath>
     <DefineConstants>DEBUG;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>False</ConsolePause>
+    <CustomCommands>
+      <CustomCommands>
+        <Command type="Custom" command="../../../../../../../Applications/Xamarin Studio.app/Contents/MacOS/XamarinStudio" workingdir="../../../../../../../Applications/Xamarin Studio.app/Contents/MacOS/">
+          <EnvironmentVariables>
+            <Variable name="MONODEVELOP_DEV_ADDINS" value="${TargetDir}" />
+          </EnvironmentVariables>
+        </Command>
+      </CustomCommands>
+    </CustomCommands>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
-    <Optimize>True</Optimize>
-    <OutputPath>bin\MacOS\Release</OutputPath>
+    <Optimize>False</Optimize>
+    <OutputPath>bin\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>False</ConsolePause>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'ReleaseLinux|AnyCPU' ">
     <DebugType>none</DebugType>
-    <Optimize>True</Optimize>
-    <OutputPath>bin\MacOS\Release</OutputPath>
+    <Optimize>False</Optimize>
+    <OutputPath>bin\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>False</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="MonoDevelop.Core">
-      <HintPath>References\MonoDevelop.Core.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml" />
+    <Reference Include="MonoDevelop.Core">
+      <HintPath>..\..\..\..\..\..\..\Applications\MonoDevelop.app\Contents\MacOS\lib\monodevelop\bin\MonoDevelop.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoDevelop.Ide">
+      <HintPath>..\..\..\..\..\..\..\Applications\MonoDevelop.app\Contents\MacOS\lib\monodevelop\bin\MonoDevelop.Ide.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoDevelop.DesignerSupport">
+      <HintPath>References\MonoDevelop.DesignerSupport.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="MonoDevelop.MonoMac">
+      <HintPath>..\..\..\..\..\..\..\Applications\MonoDevelop.app\Contents\MacOS\lib\monodevelop\AddIns\MonoDevelop.MonoMac\MonoDevelop.MonoMac.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoDevelop.MacDev">
+      <HintPath>..\..\..\..\..\..\..\Applications\MonoDevelop.app\Contents\MacOS\lib\monodevelop\AddIns\MonoDevelop.MacDev\MonoDevelop.MacDev.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoMac">
+      <HintPath>..\..\..\..\..\..\..\Applications\MonoDevelop.app\Contents\MacOS\lib\monodevelop\AddIns\MonoDevelop.MonoMac\MonoMac.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoDevelop.Debugger.Soft">
+      <HintPath>..\..\..\..\..\..\..\Applications\MonoDevelop.app\Contents\MacOS\lib\monodevelop\AddIns\MonoDevelop.Debugger.Soft\MonoDevelop.Debugger.Soft.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoDevelop.Debugger">
+      <HintPath>..\..\..\..\..\..\..\Applications\MonoDevelop.app\Contents\MacOS\lib\monodevelop\AddIns\MonoDevelop.Debugger\MonoDevelop.Debugger.dll</HintPath>
+    </Reference>
+    <Reference Include="glib-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="gtk-dotnet, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="gtk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Xamarin.Ide">
+      <HintPath>..\..\..\..\..\..\..\Applications\Xamarin Studio.app\Contents\MacOS\lib\monodevelop\AddIns\Xamarin.Ide\Xamarin.Ide.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="MonoGameProject.cs" />
+    <Compile Include="MonoGameBuildAction.cs" />
+    <Compile Include="MonoGameBuildExtension.cs" />
+    <Compile Include="MonoGameProjectBinding.cs" />
+    <Compile Include="MonoGameProjectConfiguration.cs" />
+    <Compile Include="MonoGameContentProcessor.cs" />
+    <Compile Include="Builder\ContentBuilderWindows.cs" />
+    <Compile Include="Builder\ContentBuilderLinux.cs" />
+    <Compile Include="Builder\ContentBuilderMac.cs" />
+    <Compile Include="Builder\ContentBuilder.cs" />
+    <Compile Include="ContentPropertyProvider.cs" />
+    <Compile Include="Builder\ContentBuilderArgs.cs" />
+    <Compile Include="MonoGameContentProject.cs" />
+    <Compile Include="MacMonoGameProject.cs" />
+    <Compile Include="IMonoGameProject.cs" />
+    <Compile Include="MacMonoGameProjectBinding.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <EmbeddedResource Include="MonoDevelop.MonoGame.addin.xml" />
+    <EmbeddedResource Include="MonoDevelop.MonoGame.addin.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="templates\" />
+    <Folder Include="icons\" />
+    <Folder Include="assemblies\" />
+    <Folder Include="templates\MonoGameApplication\" />
+    <Folder Include="assemblies\Android\" />
+    <Folder Include="assemblies\iOS\" />
+    <Folder Include="assemblies\MacOS\" />
+    <Folder Include="assemblies\WindowsGL\" />
+    <Folder Include="assemblies\Linux\" />
+    <Folder Include="assemblies\OUYA\" />
+    <Folder Include="Builder\" />
+    <Folder Include="tools\" />
+    <Folder Include="tools\macos\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="templates\MonoGameApplication\AboutAssets.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="templates\MonoGameAndroidClass.xft.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="templates\MonoGameAndroidProject.xpt.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assemblies\Android\Lidgren.Network.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assemblies\Android\MonoGame.Framework.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assemblies\iOS\Lidgren.Network.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assemblies\iOS\MonoGame.Framework.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assemblies\Linux\Lidgren.Network.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assemblies\Linux\MonoGame.Framework.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assemblies\Linux\OpenTK.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assemblies\Linux\OpenTK.dll.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assemblies\Linux\sdl.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assemblies\Linux\sdl_mixer.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assemblies\Linux\Tao.Sdl.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assemblies\Linux\Tao.Sdl.dll.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assemblies\MacOS\Lidgren.Network.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assemblies\MacOS\MonoGame.Framework.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assemblies\MacOS\Tao.Sdl.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assemblies\MacOS\Tao.Sdl.dll.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assemblies\WindowsGL\Lidgren.Network.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assemblies\WindowsGL\MonoGame.Framework.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assemblies\WindowsGL\OpenTK.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assemblies\WindowsGL\sdl.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assemblies\WindowsGL\Tao.Sdl.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="icons\monogame-32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="icons\monogame-project-16.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="icons\monogame-project-32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="icons\monogame-project-android-32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="icons\monogame-project-ios-32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="templates\MonoGameApplication\AboutContent.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="templates\MonoGameApplication\AboutResources.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="templates\MonoGameApplication\Activity1.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="templates\MonoGameApplication\AndroidAssemblyInfo.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="templates\MonoGameApplication\AssemblyInfo.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="templates\MonoGameApplication\Game1.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="templates\MonoGameApplication\Icon-hd.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="templates\MonoGameApplication\Icon-ld.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="templates\MonoGameApplication\Icon-md.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="templates\MonoGameApplication\iOSAssemblyInfo.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="templates\MonoGameApplication\iOSDefault.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="templates\MonoGameApplication\iOSGame.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="templates\MonoGameApplication\iOSGameThumbnail.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="templates\MonoGameApplication\iOSInfo.plist">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="templates\MonoGameApplication\iOSMain.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="templates\MonoGameApplication\MacGame.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="templates\MonoGameApplication\MacGame.fs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="templates\MonoGameApplication\MacInfo.plist">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="templates\MonoGameApplication\MacMain.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="templates\MonoGameApplication\MacMain.fs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="templates\MonoGameApplication\Program.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="templates\MonoGameApplication\Resource.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="templates\MonoGameApplication\Splash.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="templates\MonoGameApplication\Styles.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="templates\MonoGameiOSClass.xft.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="templates\MonoGameiOSProject.xpt.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="templates\MonoGameLinuxProject.xpt.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="templates\MonoGameMacClass.xft.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="templates\MonoGameMacFsharpProject.xpt.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="templates\MonoGameMacProject.xpt.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="templates\MonoGameWindowsProject.xpt.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assemblies\OUYA\Lidgren.Network.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assemblies\OUYA\MonoGame.Framework.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assemblies\OUYA\Ouya.Console.Api.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="templates\MonoGameApplication\OUYAActivity1.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="templates\MonoGameOUYAProject.xpt.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="tools\macos\libnvtt.dylib">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="tools\macos\Lidgren.Network.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="tools\macos\MGCB.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="tools\macos\MonoGame.Framework.Content.Pipeline.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="tools\macos\MonoGame.Framework.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="tools\macos\NAudio.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="tools\macos\Nvidia.TextureTools.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="tools\macos\Nvidia.TextureTools.dll.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="tools\macos\Tao.Sdl.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="tools\macos\Tao.Sdl.dll.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 </Project>

@@ -56,8 +56,8 @@ namespace MonoDevelop.MonoGame
 			if (!string.IsNullOrEmpty(Processor))
 				sb.AppendFormat("/Processor:{0} ", Processor);
 
-			//if (!string.IsNullOrEmpty(Platform))
-			//	sb.AppendFormat("/Platform:{0} ", Platform);
+			if (!string.IsNullOrEmpty(Platform))
+				sb.AppendFormat("/Platform:{0} ", Platform);
 
 			return sb.ToString();
 		}

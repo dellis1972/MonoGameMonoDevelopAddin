@@ -37,7 +37,7 @@ namespace MonoDevelop.MonoGame
 			return System.IO.Path.GetFileNameWithoutExtension(filename) + ".xnb";
 		}
 
-		public static List<string> GetContentPipelineReferences (MonoGameProject project, BuildData buildData)
+		public static List<string> GetContentPipelineReferences (IMonoGameProject project, BuildData buildData)
 		{
 			List<string> projectReferences = new List<string>();
 			foreach (Project proj in project.ParentSolution.GetAllProjects()) {
@@ -51,7 +51,7 @@ namespace MonoDevelop.MonoGame
 			return projectReferences;
 		}
 		
-		public static BuildResult Compile (ProjectFile file, MonoDevelop.Core.IProgressMonitor monitor, BuildData buildData, MonoGameProject project)
+		public static BuildResult Compile (ProjectFile file, MonoDevelop.Core.IProgressMonitor monitor, BuildData buildData, IMonoGameProject project)
 		{
 			GetContentPipelineReferences(project, buildData);
 			// its not a file we know about so dont do anything

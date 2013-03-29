@@ -25,7 +25,7 @@ namespace MonoDevelop.MonoGame
 		{
 			ProjectFile file = o as ProjectFile;
 			if(file != null)
-				return file.Project is MonoGameProject;// || file.Project is ContentProject;
+				return file.Project is IMonoGameProject;// || file.Project is ContentProject;
 			
 			return false;
 		}
@@ -135,7 +135,7 @@ namespace MonoDevelop.MonoGame
 					ContentFileWrapper wrapper = context != null ? context.Instance as ContentFileWrapper : null;
 					if (wrapper != null && wrapper.file != null)
 					{
-						MonoGameProject project = wrapper.file.Project as MonoGameProject;
+						IMonoGameProject project = wrapper.file.Project as IMonoGameProject;
 						return project != null;
 					}
 					return false;
@@ -158,7 +158,7 @@ namespace MonoDevelop.MonoGame
 					ContentFileWrapper wrapper = context != null ? context.Instance as ContentFileWrapper : null;
 					if (wrapper != null && wrapper.file != null)
 					{
-						MonoGameProject project = wrapper.file.Project as MonoGameProject;
+						IMonoGameProject project = wrapper.file.Project as IMonoGameProject;
 						if (project != null)
 							return new StandardValuesCollection(project.GetImporterNames());
 					}
@@ -173,7 +173,7 @@ namespace MonoDevelop.MonoGame
 					ContentFileWrapper wrapper = context != null ? context.Instance as ContentFileWrapper : null;
 					if (wrapper != null && wrapper.file != null)
 					{
-						MonoGameProject project = wrapper.file.Project as MonoGameProject;
+						IMonoGameProject project = wrapper.file.Project as IMonoGameProject;
 						if (project != null)
 						{
 							return project.IsImporterNameValid(str);
@@ -199,7 +199,7 @@ namespace MonoDevelop.MonoGame
 					ContentFileWrapper wrapper = context != null ? context.Instance as ContentFileWrapper : null;
 					if (wrapper != null && wrapper.file != null)
 					{
-						MonoGameProject project = wrapper.file.Project as MonoGameProject;
+						IMonoGameProject project = wrapper.file.Project as IMonoGameProject;
 						if (project != null)
 							return new StandardValuesCollection(project.GetProcessorNames());
 					}
@@ -214,7 +214,7 @@ namespace MonoDevelop.MonoGame
 					ContentFileWrapper wrapper = context != null ? context.Instance as ContentFileWrapper : null;
 					if (wrapper != null && wrapper.file != null)
 					{
-						MonoGameProject project = wrapper.file.Project as MonoGameProject;
+						IMonoGameProject project = wrapper.file.Project as IMonoGameProject;
 						if (project != null)
 						{
 							return project.IsProcessorNameValid(str);

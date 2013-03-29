@@ -17,7 +17,7 @@
 			<StartupProject>${ProjectName}</StartupProject>
 		</Options>
 		
-		<Project name = "${ProjectName}" directory = "." type = "MonoMac">
+		<Project name = "${ProjectName}" directory = "." type = "MonoGameMonoMac">
 			<Options MonoGamePlatform="MacOS"/>
 			<References>
 				<Reference type="Gac" refto="System" />

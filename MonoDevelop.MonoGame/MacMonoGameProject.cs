@@ -1,18 +1,16 @@
 using System;
-using System.Xml;
 using MonoDevelop.Projects;
-using MonoDevelop.Core.Assemblies;
+using MonoDevelop.MonoMac;
+using System.Xml;
 using MonoDevelop.Core.Serialization;
-using System.Collections.Generic;
-using MonoDevelop.Core;
 
 namespace MonoDevelop.MonoGame
-{	
-	public class MonoGameProject :  DotNetAssemblyProject, IMonoGameProject
+{
+	public class MacMonoGameProject : MonoDevelop.MonoMac.XamMacProjectBase, IMonoGameProject
 	{
 		[ItemProperty ("MonoGamePlatform")]
-	    string monoGamePlatform;
-
+		string monoGamePlatform;
+		
 		public string MonoGamePlatform {
 			get { return monoGamePlatform;}
 			set {
@@ -23,63 +21,32 @@ namespace MonoDevelop.MonoGame
 			}
 		}
 
-		public MonoGameProject ()
-		{
-			Init ();
-		}
-		
-		public MonoGameProject (string languageName)
-			: base (languageName)
-		{
-			Init ();
-		}
-		
-		public MonoGameProject (string languageName, ProjectCreateInformation info, XmlElement projectOptions)
+		public MacMonoGameProject (string languageName, 
+		                           ProjectCreateInformation info, 
+		                           XmlElement projectOptions) 
 			: base (languageName, info, projectOptions)
 		{
-			Init ();
-		
 			var monoGamePlatformAttrib = projectOptions.Attributes ["MonoGamePlatform"];
 			if (monoGamePlatformAttrib != null)
 				monoGamePlatform = monoGamePlatformAttrib.Value;
 		}
 		
-		private void Init()
+		public MacMonoGameProject (string languageName) 
+			: base (languageName)
 		{
 		}
 		
-		public override SolutionItemConfiguration CreateConfiguration (string name)
+		public MacMonoGameProject ()
 		{
-			var conf = new MonoGameProjectConfiguration (name);
-			conf.CopyFrom (base.CreateConfiguration (name));
-			return conf;
 		}
-			
-		public override bool SupportsFormat (FileFormat format)
-		{
-			return format.Id == "MSBuild10";
-		}
-		
-		public override TargetFrameworkMoniker GetDefaultTargetFrameworkForFormat (FileFormat format)
-		{
-			return new TargetFrameworkMoniker("4.0");
-		}
-		
-		public override bool SupportsFramework (MonoDevelop.Core.Assemblies.TargetFramework framework)
-		{
-			if (!framework.IsCompatibleWithFramework (MonoDevelop.Core.Assemblies.TargetFrameworkMoniker.NET_4_0))
-				return false;
-			else
-				return base.SupportsFramework (framework);
-		}
-		
+
 		protected override System.Collections.Generic.IList<string> GetCommonBuildActions ()
 		{			
 			var actions = new System.Collections.Generic.List<string>(base.GetCommonBuildActions());
 			actions.Add(MonoGameBuildAction.MonoGameContent);
 			return actions;
 		}	
-
+		
 		public override string GetDefaultBuildAction (string fileName)
 		{
 			if (MonoGameBuildAction.IsKnownFileType(System.IO.Path.GetExtension(fileName)))
@@ -87,15 +54,15 @@ namespace MonoDevelop.MonoGame
 				return MonoGameBuildAction.MonoGameContent;
 			}
 			return base.GetDefaultBuildAction (fileName);
-		}        
+		}     
 
-        protected override void PopulateSupportFileList (FileCopySet list, ConfigurationSelector solutionConfiguration)
+		protected override void PopulateSupportFileList (FileCopySet list, ConfigurationSelector solutionConfiguration)
 		{
 			System.Diagnostics.Debug.WriteLine("MonoGamePlatform=" +this.MonoGamePlatform);
 			base.PopulateSupportFileList (list, solutionConfiguration);
 			//HACK: workaround for MD not local-copying package references
-            foreach (var projectReference in References)
-            {
+			foreach (var projectReference in References)
+			{
 				if (projectReference.Reference.Contains("MonoGame.Framework"))
 				{
 					// because of a weird bug in the way monodevelop resolves the assemblies
@@ -139,30 +106,32 @@ namespace MonoDevelop.MonoGame
 							}
 						}
 					}                
-                    break;
-                }
-            }
-        }
-				
+					break;
+				}
+			}
+		}
+	
 		public bool IsProcessorNameValid (string str)
 		{
 			return true;
 		}
-
+		
 		public System.Collections.ICollection GetProcessorNames ()
 		{
 			return new string[] {"TextureProcessor", "SpriteFontProcessor", "SoundEffectProcessor", "SongProcessor"};
 		}
-
+		
 		public bool IsImporterNameValid (string str)
 		{
 			return true;
 		}
-
+		
 		public System.Collections.ICollection GetImporterNames ()
 		{
 			return new string[] {"TextureImporter", "FontDescriptionImporter", "WavImporter", "Mp3Importer"};
 		}
 	}
+	
+
 }
 

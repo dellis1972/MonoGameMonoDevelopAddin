@@ -30,7 +30,7 @@ namespace MonoDevelop.MonoGame
 #endif			
 			try
 			{				
-				var proj = item as MonoGameProject;
+				var proj = item as IMonoGameProject;
 				if (proj == null)
 				{
 					monitor.Log.WriteLine("Compiling for Unknown MonoGame Project");
