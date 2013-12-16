@@ -104,6 +104,8 @@ namespace MonoDevelop.MonoGame
 
         protected override void PopulateSupportFileList (FileCopySet list, ConfigurationSelector solutionConfiguration)
 		{
+			if(this.MonoGamePlatform==null)
+				this.MonoGamePlatform=String.Empty;
 			System.Diagnostics.Debug.WriteLine("MonoGamePlatform=" +this.MonoGamePlatform);
 			base.PopulateSupportFileList (list, solutionConfiguration);
 			//HACK: workaround for MD not local-copying package references
