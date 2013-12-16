@@ -7,7 +7,7 @@
 
 	<target name="build" description="Build Visual Studio Templates">
 		 <if test="${os == 'Win32NT'}">
-			<exec program="msbuild " commandline="MonoDevelop.MonoGame.sln /t:Build /p:Configuration=Release" />			
+			<exec program="msbuild" commandline="MonoDevelop.MonoGame.sln /t:Build /p:Configuration=Release" />			
 		</if>
 		<if test="${os == 'Unix'}">
 			<exec program="xbuild" commandline="/t:Build /p:Configuration=Release MonoDevelop.MonoGame.sln" />
